@@ -1,0 +1,19 @@
+{
+  "name": "adivina-numero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronCS-22/adivina-numero.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronCS-22/adivina-numero/issues"
+  },
+  "homepage": "https://github.com/AaronCS-22/adivina-numero#readme"
+}
