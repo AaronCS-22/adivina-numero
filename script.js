@@ -34,10 +34,8 @@ function checkNumber() {
   if (!isNaN(numActual) && numActual <= MAX_NUMBER && numActual >= 1) {
     if (numActual == numAleat) {
       ganador()
-    } else if (numActual > numAleat) {
-      fallo('menor')
     } else {
-      fallo('mayor')
+      fallo(numActual)
     }
   } else {
     messageField.textContent = 'Please enter a number between 1 and 20'
@@ -54,8 +52,12 @@ function ganador() {
   numberField.textContent = numAleat
 }
 
-function fallo(mensaje) {
-  messageField.textContent = `El número es ${mensaje}`
+function fallo(numActual) {
+  if (numActual > numAleat) {
+    messageField.textContent = `El número es menor`
+  } else {
+    messageField.textContent = `El número es mayor`
+  }
   score--
   scoredFile.textContent = score
   if (score <= 0) {
