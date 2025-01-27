@@ -2,7 +2,7 @@ const INITIAL_SCORE = 20
 const MAX_NUMBER = 20
 
 let score
-let highscore = 0
+let highscore = Number(localStorage.getItem('highscore')) || 0
 let numAleat
 
 const messageField = document.querySelector('.message')
@@ -23,7 +23,14 @@ function init_content() {
   numberField.textContent = '?'
   scoredFile.textContent = score
   guessField.value = ''
+  document.body.style.backgroundColor = '#222'
 }
+
+guessField.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    checkNumber()
+  }
+})
 
 againButton.addEventListener('click', restart)
 checkButton.addEventListener('click', checkNumber)
@@ -45,11 +52,13 @@ function checkNumber() {
 function ganador() {
   if (score > highscore) {
     highscore = score
+    localStorage.setItem('highscore', highscore)
     highscoreField.textContent = highscore
   }
   messageField.textContent = 'You win!'
   checkButton.disabled = true
   numberField.textContent = numAleat
+  backgroundColor('green')
 }
 
 function fallo(numActual) {
@@ -61,8 +70,16 @@ function fallo(numActual) {
     checkButton.disabled = true
     numberField.textContent = numAleat
   }
+  backgroundColor('#aa0000')
 }
 
 function restart() {
   init_content()
+}
+
+async function backgroundColor(color) {
+  document.body.style.backgroundColor = color
+  document.body.style.transition = 'background-color 0.33s ease-in-out'
+  await new Promise((resolve) => setTimeout(resolve, 500))
+  document.body.style.backgroundColor = '#222'
 }
