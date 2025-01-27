@@ -2,7 +2,7 @@ const INITIAL_SCORE = 20
 const MAX_NUMBER = 20
 
 let score
-let highscore = Number(localStorage.getItem('highscore')) || 0
+let highscore = localStorage.getItem('highscore') || 0
 let numAleat
 
 const messageField = document.querySelector('.message')
@@ -23,6 +23,7 @@ function init_content() {
   numberField.textContent = '?'
   scoredFile.textContent = score
   guessField.value = ''
+  highscoreField.textContent = highscore
   document.body.style.backgroundColor = '#222'
 }
 
