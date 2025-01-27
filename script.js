@@ -53,11 +53,7 @@ function ganador() {
 }
 
 function fallo(numActual) {
-  if (numActual > numAleat) {
-    messageField.textContent = `El número es menor`
-  } else {
-    messageField.textContent = `El número es mayor`
-  }
+  messageField.textContent = numActual > numAleat ? 'Too high' : 'Too low'
   score--
   scoredFile.textContent = score
   if (score <= 0) {
